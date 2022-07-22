@@ -181,10 +181,12 @@ copy () {
 }
 
 post () {
-  # execute _update_scss if it exists in the update folder
-  if [ -d "update/lib/_update_scss" ]; then
-    node "update/lib/_update_scss"
-  fi
+	if [ -d "update/lib/_update_scss" ]; then
+		node "update/lib/_update_scss"
+	fi
+	if [ -f "update/lib/_update_javascripts.js" ]; then
+		node "update/lib/_update_javascripts"
+	fi
 }
 
 if [ "$0" == "${BASH_SOURCE:-$0}" ]
