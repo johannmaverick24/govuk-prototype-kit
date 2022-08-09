@@ -1,0 +1,29 @@
+{% import "../macros/error-summary/govukErrorSummary.njk" as  es %}
+{% extends "layout.html" %}
+
+{% block pageTitle %} Question page {% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{backButton}}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">Request a mobile security code</h1> 
+
+        <p class='govuk-body'>To ensure access to your digital certificate is protected, a security code will be sent to the mobile number you provided during the application, ending {{ phoneNumber | obstructPhone }}</p>
+
+        <div class="govuk-inset-text">
+          This security code will expire after 30 minutes
+        </div>
+
+        <form class="form" action="" method="post">
+            <button class="govuk-button" data-module="govuk-button">Send code</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

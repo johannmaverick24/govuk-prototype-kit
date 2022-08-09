@@ -1,0 +1,92 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        View your DBS Online Result
+      </h1>
+
+      <p>See the results of your application for a DBS check.
+        This application may have been made on your behalf by a third party, such as your employer.
+      </p>
+
+      <p>You can use this service to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>View the results of your DBS check</li>
+        <li>Share your results with someone else, e.g. your employer</li>
+        <li>Manage who you are sharing your results with</li>
+        <li>Contact DBS if any information on your result is incorrect</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">What you will need</h2>
+
+      <p>To view your results, you will need:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Your mobile phone - we will text you a security code to the number you provided in the application</li>
+        <li>Your certificate number - find this on the email we sent telling you that your results are ready</li>
+        <li>Your passport</li>
+        <li>Your driving license (if you have one)</li>
+      </ul>
+
+      <a href="/dashboard/enter-certificate" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
+        Start
+        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg>
+      </a>
+
+      <h2 class="govuk-heading-m">Contact DBS</h2>
+
+      <p>You can call us on 03000 200 190 if you have any questions or need help.</p>
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+      <h2 class="govuk-heading-m" id="subsection-title">
+          Related Content
+      </h2>
+      <nav role="navigation" aria-labelledby="subsection-title">
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <a href="#">
+                Apply for a basic DBS check
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Update your result
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                DBS Checks - Guidance
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                DBS Checks - Eligibility Criteria
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                Barring Referrals
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+    </div> 
+    
+  </div>
+
+{% endblock %}

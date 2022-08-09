@@ -1,0 +1,64 @@
+{% import "../macros/error-summary/govukErrorSummary.njk" as  es %}
+{% extends "layout.html" %}
+
+{% block pageTitle %} Question page {% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="{{backButton}}">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        {% if validation | length %}
+
+          {% set errorList = [] %}
+
+          {% for key, value in validation %}
+              {% set errorList = (errorList.push({
+                  "text": value,
+                  "href": "#" + key
+              }), errorList) %}
+          {% endfor %}
+
+          {{ es.govukErrorSummary({ "titleText": "There is a problem", "errorList": errorList }) }}
+
+        {% endif %}
+
+        <h1 class="govuk-heading-l">Check your phone</h1> 
+
+        <p class='govuk-body'>Enter the 6 digit security code we sent to {{ phoneNumber | obstructPhone }}</p>
+
+        <form class="form" action="" method="post">
+            <div class="govuk-form-group  {% if validation['otp-code'] %}govuk-form-group--error{% endif %}">
+                <label class="govuk-label" for="account-number"> Enter security code </label>
+                  {% if validation['otp-code'] %}
+                      <span id="nino-error" class="govuk-error-message">
+                          <span class="govuk-visually-hidden">Error:</span> {{ validation['otp-code'] }}
+                      </span>
+                  {% endif %}
+                <input
+                    class="govuk-input govuk-input--width-10"
+                    id="otp-code"
+                    name="otp-code"
+                    type="text"
+                    value="{{cache['otp-code']}}"
+                    spellcheck="false"
+                    aria-describedby="account-number-hint"
+                    inputmode="text"
+                />
+            </div>
+
+            <div class="govuk-!-margin-bottom-6 govuk-!-margin-top-2">
+              <p class='govuk-body govuk-!-margin-bottom-1'> Didn't receive your security code, or the security code has expired? </p>
+              <p class='govuk-body' ><a class='govuk-link' href='#'> Resend security code </a> </p>
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">Continue</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -106,7 +106,31 @@ if (env === 'development') {
 
 nunjucksConfig.express = app
 
-var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
+var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig);
+
+const obstructPhone = (value) => {
+
+  if (!value) {
+      return '';
+  }
+
+  let resultString = '';
+
+  let temp = value.split('');
+  console.log(temp.length)
+
+  for (let i = 0; i < temp.length; i++) {
+    if(i < 7){
+      resultString += '*'
+    } else {
+      resultString += temp[i];
+    }
+  }
+
+  return resultString;
+}
+
+nunjucksAppEnv.addFilter('obstructPhone', obstructPhone);
 
 // Add Nunjucks filters
 utils.addNunjucksFilters(nunjucksAppEnv)
